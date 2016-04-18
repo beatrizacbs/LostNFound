@@ -14,7 +14,7 @@ public class Usuario {
 	public void setLogin(String login) {
 		if(login == null)
 		{
-			// EXCESS�O DE LOGIN INVALIDO
+			// EXCEÇÃO DE LOGIN INVALIDO
 		}
 		else
 		{
@@ -27,7 +27,7 @@ public class Usuario {
 	public void setSenha(String senha) {
 		if(senha == null)
 		{
-			//EXCESS�O PRA SENHA INVALIDA
+			//EXCEÇÃO PRA SENHA INVALIDA
 		}
 		else
 		{
@@ -41,7 +41,7 @@ public class Usuario {
 		
 		if(cpf == null)
 		{
-			//EXCESS�O
+			//EXCEÇÃO
 			
 		}
 		else
@@ -55,7 +55,7 @@ public class Usuario {
 	public void setNome(String nome) {
 		if(nome == null)
 		{
-			//EXCESS�O
+			//EXCEÇÃO
 		}else
 		{
 			this.nome = nome;
