@@ -48,7 +48,7 @@ public class RepositorioCliente {
 			}
 			else if(c == null)
 			{
-				//EXCESS√O DE CLIENTE NULL (null pointer)
+				//EXCE√á√ÉO DE CLIENTE NULL (null pointer)
 				retorno = false;
 			}
 			
@@ -56,16 +56,16 @@ public class RepositorioCliente {
 		}
 		else
 		{
-			//EXCESS√O DE PILHA CHEIA
+			//EXCE√á√ÉO DE PILHA CHEIA
 			return false;
 		}
 	}
 
 	public boolean deletarCliente(String cpf)
 	{
-		if(this.topo - this.tamanho == this.tamanho)//V  SE A PILHA TA VAZIA
+		if(this.topo - this.tamanho == this.tamanho)//V√ä SE A PILHA TA VAZIA
 		{
-			//EXCESS√O PRA PILHA VAZIA
+			//EXCE√á√ÉO PRA PILHA VAZIA
 			return false;
 		}
 		else
@@ -80,7 +80,7 @@ public class RepositorioCliente {
 			}
 			else
 			{
-				//EXCESSAO PARA CLIENTE QUE NAO EXISTE
+				//EXCE√áAO PARA CLIENTE QUE NAO EXISTE
 				return false;
 			}
 			
@@ -97,7 +97,7 @@ public class RepositorioCliente {
 			}
 			else
 			{
-				//VAI PRA O PR”XIMO
+				//VAI PRA O PR√ìXIMO
 			}
 		}
 		
@@ -140,7 +140,7 @@ public class RepositorioCliente {
 			return true;
 		}
 		else
-		{	//DEPOIS PODE MUDAR ISSO SE QUISER T¡ AQUI S” POR ENQUANTO
+		{	//DEPOIS PODE MUDAR ISSO SE QUISER T√Å AQUI S√ì POR ENQUANTO
 			this.inserirCliente(new Cliente(null, novoEmail, null, novoEndereco, cpf, novoTelefone, novoNome));
 			return true;
 		}
