@@ -28,7 +28,7 @@ public class RepositorioAdm {
 			}
 			else if(a == null)
 			{
-				//EXCESS√O DE ADM NULL (null pointer)
+				//EXCE√á√ÉO DE ADM NULL (null pointer)
 				retorno = false;
 			}
 			
@@ -36,16 +36,16 @@ public class RepositorioAdm {
 		}
 		else
 		{
-			//EXCESS√O DE PILHA CHEIA
+			//EXCE√á√ÉO DE PILHA CHEIA
 			return false;
 		}
 	}
 	
 	public boolean deletarAdm(String codigo)
 	{
-		if(this.topo - this.tamanho == this.tamanho)//V  SE A PILHA TA VAZIA
+		if(this.topo - this.tamanho == this.tamanho)//V√ä SE A PILHA TA VAZIA
 		{
-			//EXCESS√O PRA PILHA VAZIA
+			//EXCE√á√ÉO PRA PILHA VAZIA
 			return false;
 		}
 		else
@@ -60,7 +60,7 @@ public class RepositorioAdm {
 			}
 			else
 			{
-				//EXCESSAO PARA CLIENTE QUE NAO EXISTE
+				//EXCE√áAO PARA CLIENTE QUE NAO EXISTE
 				return false;
 			}
 			
@@ -100,7 +100,7 @@ public class RepositorioAdm {
 			}
 			else
 			{
-				//VAI PRA O PR”XIMO
+				//VAI PRA O PR√ìXIMO
 			}
 		}
 		
@@ -119,7 +119,7 @@ public class RepositorioAdm {
 			return true;
 		}
 		else
-		{	//DEPOIS PODE MUDAR ISSO SE QUISER T¡ AQUI S” POR ENQUANTO
+		{	//DEPOIS PODE MUDAR ISSO SE QUISER T√Å AQUI S√ì POR ENQUANTO
 			this.inserirAdm(new Administrador(codigo, null, null, novoCpf, novoNome));
 			return true;
 		}
