@@ -15,7 +15,7 @@ public class Cliente extends Usuario {
 	public void setEmail(String email) {
 		if(email == null)
 		{
-			//EXCESS�O
+			//EXCEÇÃO
 		}else
 		{
 			this.email = email;
@@ -27,7 +27,7 @@ public class Cliente extends Usuario {
 	public void setEndereco(String endereco) {
 		if(endereco == null)
 		{
-			//EXCESS�O
+			//EXCEÇÃO
 		}else
 		{
 			this.endereco = endereco;
@@ -39,7 +39,7 @@ public class Cliente extends Usuario {
 	public void setTelefone(String telefone) {
 		if(telefone == null)
 		{
-			//EXCESS�O
+			//EXCEÇÃO
 		}else
 		{
 			this.telefone = telefone;
