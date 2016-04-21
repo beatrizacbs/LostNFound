@@ -9,6 +9,17 @@ public class Cliente extends Usuario {
 	private String telefone;
 	
 	
+	//Construtor da Classe Cliente
+	//Passei Endereco endereço no construtor, pq ele ta numa classe especial só pra endereço
+	//e consequentemente, tirei o this.endereço
+	public Cliente(String login, String email, String senha, Endereco endereco, String cpf, String telefone, String nome)
+	{
+		super(login, senha, cpf, nome);
+		this.email = email;
+		this.telefone = telefone;
+	}
+
+	
 	public String getEmail() {
 		return email;
 	}
@@ -45,15 +56,5 @@ public class Cliente extends Usuario {
 			this.telefone = telefone;
 		}
 	}
-	
-	public Cliente(String login, String email, String senha, String endereco, String cpf, String telefone, String nome)
-	{
-		super(login, senha, cpf, nome);
-		this.email = email;
-		this.endereco = endereco;
-		this.telefone = telefone;
-	}
 
-
-	
 }

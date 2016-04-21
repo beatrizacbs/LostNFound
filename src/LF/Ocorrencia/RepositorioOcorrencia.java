@@ -1,22 +1,22 @@
-package LF.Objeto;
+package LF.Ocorrencia;
 
-public class RepositorioObjeto {
-  
-  private Objeto[] obj;
+public class RepositorioOcorrencia{
+	
+	private Ocorrencia[] obj;
 	private int topo;
 	private int tamanho;
 	
 	
 	//Construtor da classe
-	public RepositorioObj(int tamanho)
+	public RepositorioOcorrencia(int tamanho)
 	{
-		this.obj = new Objeto[tamanho];
+		this.obj = new Ocorrencia[tamanho];
 		this.topo = 0;
 	}
 	
 	
 	//CRUD
-	public boolean inserirObj(Objeto b)
+	public boolean inserirObj(Ocorrencia b)
 	{
 		if(b.equals(null))
 	  {
@@ -26,7 +26,7 @@ public class RepositorioObjeto {
 		{
 			for(topo = 0; topo < this.tamanho; topo ++)
 			{
-				if(b.getCaracteristica() == obj[topo].getCaracteristica())
+				if(b.getTipo() == obj[topo].getTipo())
 				{
 					return false;
 				}
@@ -95,7 +95,7 @@ public class RepositorioObjeto {
 		}
 	}
 
-	public Objeto procurarObj(String tipo)
+	public Ocorrencia procurarObj(String tipo)
 	{
 		int i = 0;
 		boolean achou = false;
@@ -111,7 +111,7 @@ public class RepositorioObjeto {
 				}
 			}
 		
-			Objeto resultado = null;
+			Ocorrencia resultado = null;
 			if (i != this.tamanho) {
 				resultado = this.obj[i];
 			}

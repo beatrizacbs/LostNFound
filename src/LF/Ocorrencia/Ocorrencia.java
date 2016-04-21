@@ -1,16 +1,18 @@
-package LF.Objeto;
+package LF.Ocorrencia;
 
-public class Objeto {
+public class Ocorrencia{
 	
 	private String tipo;
 	private String caracteristicas;
 	private String dataDeEntrada;
 	private boolean devolvido;
 	
-	public Objeto(String tipo, String caracteristicas, String dataDeEntrada)
+	//Construtor
+	//Passei tipo e caracteristicas no construtor, chamando elas das classes tipo e caract
+	public Ocorrencia(Tipo tipo, Caract caracteristicas, String dataDeEntrada,
+			boolean devolvido)
 	{
-		this.tipo = tipo;
-		this.caracteristicas = caracteristicas;
+		
 		this.dataDeEntrada = dataDeEntrada;
 		this.devolvido = false;
 		
@@ -47,7 +49,4 @@ public class Objeto {
 	public void setDevolvido(boolean devolvido) {
 		this.devolvido = devolvido;
 	}
-	
-	
-
 }
