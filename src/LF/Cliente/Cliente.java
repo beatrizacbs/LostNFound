@@ -57,4 +57,17 @@ public class Cliente extends Usuario {
 		}
 	}
 
+	public String toString() {
+		
+		String st = "Nome:" + this.getNome();
+		st = st + "\nCpf:" + this.getCpf();
+		st = st + "\nLogin:" + this.getLogin();
+		st = st + "\nSenha:" + this.getSenha();
+		st = st + "\nEmail:" + this.getEmail();
+		st = st + "\nEndereco:" + this.getEndereco();
+		st = st + "\nTelefone:" + this.getTelefone();
+			return st;
+	}
+
+	
 }

@@ -3,18 +3,18 @@ package LF.Ocorrencia;
 public class Ocorrencia{
 	
 	private String tipo;
-	private String caracteristicas;
+	private Caract caracteristicas;
 	private String dataDeEntrada;
 	private boolean devolvido;
+	private String id;
 	
 	//Construtor
-	//Passei tipo e caracteristicas no construtor, chamando elas das classes tipo e caract
 	public Ocorrencia(Tipo tipo, Caract caracteristicas, String dataDeEntrada,
-			boolean devolvido)
+			boolean devolvido, String id)
 	{
-		
 		this.dataDeEntrada = dataDeEntrada;
 		this.devolvido = false;
+		this.id = id;
 		
 	}
 
@@ -26,11 +26,11 @@ public class Ocorrencia{
 		this.tipo = tipo;
 	}
 
-	public String getCaracteristicas() {
+	public Caract getCaracteristicas() {
 		return caracteristicas;
 	}
 
-	public void setCaracteristicas(String caracteristicas) {
+	public void setCaracteristicas(Caract caracteristicas) {
 		this.caracteristicas = caracteristicas;
 	}
 
@@ -49,4 +49,19 @@ public class Ocorrencia{
 	public void setDevolvido(boolean devolvido) {
 		this.devolvido = devolvido;
 	}
+	public String getId(){
+		return id;
+	}
+	public void setId(String id){
+		this.id = id;
+	}
+
+	@Override
+	public String toString() {
+		return "Ocorrencia [tipo = " + tipo + ", caracteristicas = "
+				+ caracteristicas + ", dataDeEntrada = " + dataDeEntrada
+				+ ", devolvido = " + devolvido + ", id = " + id + "]";
+	}
+	
+	
 }

@@ -1,8 +1,16 @@
 package LF.Administrador;
 
-import LF.Cliente.Cliente;
+import java.util.ArrayList;
+import java.util.List;
 
-public class RepositorioAdm {
+import excecao.CodigoInvalidoException;
+import excecao.CpfInvalidoException;
+import excecao.LoginInvalidoException;
+import excecao.NomeInvalidoException;
+import excecao.SenhaInvalidaException;
+
+
+public class RepositorioAdm implements IRepositorioAdm {
 	
 	private Administrador[] adms;
 	private int topo;
@@ -12,6 +20,17 @@ public class RepositorioAdm {
 	{
 		this.adms = new Administrador[tamanho];
 		this.topo = 0;
+	}
+	
+	ArrayList<Administrador> listaAdm = new ArrayList<Administrador>();
+	
+	public void inserir(Administrador teste)
+	{
+		this.listaAdm.add(teste);
+	}
+	public List<Administrador> ListarAdministrador() {
+		
+		return listaAdm;
 	}
 	
 	public boolean inserirAdm(Administrador a)
@@ -108,7 +127,9 @@ public class RepositorioAdm {
 		
 	}
 
-	public boolean atualizarAdm(String codigo, String novoNome, String novoCpf)
+	public boolean atualizarAdm(String login, String senha, String codigo, String novoNome, String novoCpf) throws 
+	LoginInvalidoException, CpfInvalidoException, NomeInvalidoException, SenhaInvalidaException,
+	CodigoInvalidoException
 	{
 		Administrador a = procurarAdm(codigo);
 		if(a != null)
@@ -120,8 +141,9 @@ public class RepositorioAdm {
 		}
 		else
 		{	//DEPOIS PODE MUDAR ISSO SE QUISER TÁ AQUI SÓ POR ENQUANTO
-			this.inserirAdm(new Administrador(codigo, null, null, novoCpf, novoNome));
-			return true;
+			//this.inserirAdm(new Administrador(codigo, null, null, novoCpf, novoNome));
+			return false;
 		}
 	}
+
 }

@@ -1,6 +1,19 @@
 package LF.Cliente;
 
-public class RepositorioCliente {
+import java.util.ArrayList;
+import java.util.List;
+
+import excecao.CpfInvalidoException;
+import excecao.EmailInvalidoException;
+import excecao.EnderecoInvalidoException;
+import excecao.LoginInvalidoException;
+import excecao.NomeInvalidoException;
+import excecao.SenhaInvalidaException;
+import excecao.TelefoneInvalidoException;
+
+import LF.Ocorrencia.Ocorrencia;
+
+public class RepositorioCliente implements IRepositorioCliente {
 	
 	private Cliente[] clientes;
 	private int tamanho;
@@ -11,13 +24,29 @@ public class RepositorioCliente {
 		this.clientes = new Cliente[tamanho];
 	}
 
-	public int getTamanho() {
+	public int getTamanho()
+	{
 		return this.tamanho;
 	}
 
-	public int getTopo() {
+	public int getTopo()
+	{
 		return this.topo;
 	}
+	
+	
+	ArrayList<Cliente> listaDeCliente = new ArrayList<Cliente>();
+	
+	public void inserir(Cliente teste)
+	{
+		this.listaDeCliente.add(teste);
+	}
+	
+	public List<Cliente> ListarCliente() {
+		
+		return listaDeCliente;
+	}
+
 	
 	public String toString()
 	{
@@ -128,7 +157,10 @@ public class RepositorioCliente {
 		}
 	}
 
-	public boolean atualizarCliente(String cpf, String novoNome, String novoEmail ,String novoTelefone, String novoEndereco)
+	public boolean atualizarCliente(String login, String cpf, String novoNome, String novoEmail, String novoTelefone,
+			String novoEndereco,String senha) throws CpfInvalidoException,TelefoneInvalidoException,
+			NomeInvalidoException, SenhaInvalidaException, EmailInvalidoException, EnderecoInvalidoException,
+			LoginInvalidoException
 	{
 		Cliente c = procurarCliente(cpf);
 		if(c != null)
@@ -137,12 +169,13 @@ public class RepositorioCliente {
 			c.setEmail(novoEmail);
 			c.setTelefone(novoTelefone);
 			c.setEndereco(novoEndereco);
+			
 			return true;
 		}
 		else
 		{	//DEPOIS PODE MUDAR ISSO SE QUISER TÁ AQUI SÓ POR ENQUANTO
-			this.inserirCliente(new Cliente(null, novoEmail, null, novoEndereco, cpf, novoTelefone, novoNome));
-			return true;
+			//this.inserirCliente(new Cliente(null, novoEmail, null, novoEndereco, cpf, novoTelefone, novoNome));
+			return false;
 		}
 			
 				

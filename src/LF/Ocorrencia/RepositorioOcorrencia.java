@@ -1,125 +1,93 @@
 package LF.Ocorrencia;
 
-public class RepositorioOcorrencia{
+import java.util.ArrayList;
+import java.util.List;
+
+import excecao.IdInvalidoException;
+
+
+public class RepositorioOcorrencia implements IRepositorioOcorrencia
+{
+
+	ArrayList<Ocorrencia> listaDeOcorrencia = new ArrayList<Ocorrencia>();
 	
-	private Ocorrencia[] obj;
-	private int topo;
-	private int tamanho;
-	
-	
-	//Construtor da classe
-	public RepositorioOcorrencia(int tamanho)
+	public void inserir(Ocorrencia teste)
 	{
-		this.obj = new Ocorrencia[tamanho];
-		this.topo = 0;
+		this.listaDeOcorrencia.add(teste);
 	}
 	
+	public List<Ocorrencia> ListarOcorrencia() {
+		
+		return listaDeOcorrencia;
+	}
 	
-	//CRUD
-	public boolean inserirObj(Ocorrencia b)
+	public String toString()
 	{
-		if(b.equals(null))
-	  {
-			return false;
-		}
-		else 
+		String st = "";
+		
+		for(Ocorrencia p : this.listaDeOcorrencia)
 		{
-			for(topo = 0; topo < this.tamanho; topo ++)
-			{
-				if(b.getTipo() == obj[topo].getTipo())
-				{
-					return false;
-				}
-			}
-			if(tamanho < obj.length - 1)
-			{
-				obj[tamanho] = b;
-				tamanho = tamanho + 1;
-				return true;
-			}
+			st = st + p.toString() + "\n";
+		}
+		return st;
+	}
+	
+	public void inserirOcorrencia(Ocorrencia ocorrencia) throws IdInvalidoException
+	{
+		
+		Ocorrencia p = this.procurarOcorrencia(ocorrencia.getId());
+		if(p.equals(null))
+		{
+			 listaDeOcorrencia.add(ocorrencia);
+		}
+		else
+		{
+			throw new IdInvalidoException();
 		}
 			
-		this.obj[this.tamanho] = b;
-		this.tamanho = this.tamanho + 1;
-		return true;
-		
 	}
+	
 
-	
-	public boolean deletarObj(boolean devolvido)
-	{
-	
-		boolean achou = false;
-		while ((!achou) && (topo < this.tamanho)) {
-			if (devolvido == this.obj[topo].isDevolvido()){
-				achou = true;
-			} else {
-				topo = topo + 1;
-				}
-			}
-		if(topo != this.tamanho)
+	public boolean deletarOcorrencia(String id)
+	{	
+		boolean retorno = false;
+		for(Ocorrencia ocorrencia : listaDeOcorrencia)
 		{
-			this.obj[topo] = this.obj[this.tamanho -1];
-			this.obj[this.tamanho -1] = null;
-			this.tamanho = this.tamanho -1;
-			System.out.println("Objeto " + devolvido + "removido");
-			return true;
-		}
-		else 
-		{
-			System.out.println("Objeto nao encontrado.");
-			return false;
-		}
-	}
-	
-	public void organizar()
-	{
-		for(int i = 0; i < this.topo; i++)
-		{
-			if(this.obj[i] == null)
+			if(ocorrencia.getId().equals(id))
 			{
-				if(i == this.topo - 1)//SE FOR O ULTIMO OBJETO
-				{
-					this.topo --;
-					return;
-				}
-				else//SE OUTRO OBJETO
-				{
-					this.obj[i] = this.obj[this.topo - 1];
-					this.obj[this.topo - 1] = null;
-					this.topo --;
-					return;
-				}
-					
+				int indice = listaDeOcorrencia.indexOf(ocorrencia);
+				listaDeOcorrencia.remove(indice);
+				retorno = true;
 			}
 		}
+		return retorno;
 	}
 
-	public Ocorrencia procurarObj(String tipo)
+	public boolean atualizarOcorrencia(Ocorrencia ocorrencia)
 	{
-		int i = 0;
-		boolean achou = false;
-		while ((!achou) && (i < this.tamanho))
-		{
-			if (tipo == this.obj[i].getTipo())
-			{
-				achou = true;
-			}
-			else 
-			  {
-				i = i + 1;
-				}
-			}
 		
-			Ocorrencia resultado = null;
-			if (i != this.tamanho) {
-				resultado = this.obj[i];
+		for(Ocorrencia p : listaDeOcorrencia)
+		{
+			if(p.getId().equals(ocorrencia.getId()))
+			{
+				int indice = listaDeOcorrencia.indexOf(p);
+				listaDeOcorrencia.remove(indice);
+				listaDeOcorrencia.add(ocorrencia);
 			}
-		return resultado;
+		}
+		return false;
+	}
 
+	public Ocorrencia procurarOcorrencia(String id)
+	{
+		Ocorrencia retorno = null;
+		for(Ocorrencia ocorrencia : listaDeOcorrencia)
+		{
+			if(ocorrencia.getId().equals(id));
+			retorno = ocorrencia;
+			break;
+		}
+		return retorno;
 	}
 	
-	//public Objeto atualizarObj(Objeto novoObjeto){
-	// TERMINAR O METODO ATUALIZAR
-	//}
 }

@@ -3,7 +3,7 @@ package LF.Cliente;
 public class Endereco {
 	
 		//Atributos da classe
-		private String largadouro;
+		private String logradouro;
 		private String bairro;
 		private String cep;
 		private String numero;
@@ -12,10 +12,10 @@ public class Endereco {
 		private String estado;
 		
 		//Construtor da classe
-		public Endereco(String largadouro, String bairro, String cep,
+		public Endereco(String logradouro, String bairro, String cep,
 				String numero, String complemento, String cidade, String estado) {
 			
-			this.largadouro = largadouro;
+			this.logradouro = logradouro;
 			this.bairro = bairro;
 			this.cep = cep;
 			this.numero = numero;
@@ -25,12 +25,12 @@ public class Endereco {
 		}
 
 		//Metodos get e set
-		public String getLargadouro() {
-			return largadouro;
+		public String getLogradouro() {
+			return logradouro;
 		}
 
-		public void setLargadouro(String largadouro) {
-			this.largadouro = largadouro;
+		public void setLogradouro(String logradouro) {
+			this.logradouro = logradouro;
 		}
 
 		public String getBairro() {
