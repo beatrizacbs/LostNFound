@@ -46,20 +46,21 @@ public class TelaCadastro extends JFrame {
 		});
 	}
 
-	/**
+	/** 
 	 * Create the frame.
 	 */
 	public TelaCadastro() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 582, 450);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.PINK);
+		contentPane.setForeground(new Color(0, 255, 153));
+		contentPane.setBackground(new Color(0, 255, 153));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(Color.PINK);
+		panel.setBackground(new Color(0, 255, 153));
 		panel.setBounds(153, 37, 241, 35);
 		contentPane.add(panel);
 		
@@ -69,8 +70,8 @@ public class TelaCadastro extends JFrame {
 		panel.add(lblNovoCadastro);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(Color.PINK);
-		panel_1.setBounds(35, 84, 470, 318);
+		panel_1.setBackground(new Color(0, 255, 153));
+		panel_1.setBounds(35, 84, 470, 354);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -203,5 +204,13 @@ public class TelaCadastro extends JFrame {
 		textField_12.setBounds(188, 262, 202, 19);
 		panel_1.add(textField_12);
 		textField_12.setColumns(10);
+		
+		JButton btnSalvar = new JButton("Salvar");
+		btnSalvar.setBounds(188, 293, 88, 25);
+		panel_1.add(btnSalvar);
+		
+		JButton btnNewButton = new JButton("Limpar");
+		btnNewButton.setBounds(296, 293, 88, 25);
+		panel_1.add(btnNewButton);
 	}
 }

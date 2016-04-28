@@ -10,8 +10,6 @@ public class Cliente extends Usuario {
 	
 	
 	//Construtor da Classe Cliente
-	//Passei Endereco endereço no construtor, pq ele ta numa classe especial só pra endereço
-	//e consequentemente, tirei o this.endereço
 	public Cliente(String login, String email, String senha, Endereco endereco, String cpf, String telefone, String nome)
 	{
 		super(login, senha, cpf, nome);

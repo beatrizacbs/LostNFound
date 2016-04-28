@@ -3,7 +3,7 @@ package LF.Ocorrencia;
 public class Caract {
 	
 	private String cor;
-	private String tamanho;
+	private String tamanho;//???????????????
 	private boolean danoFisico;
 	
 	//Construtor da classe

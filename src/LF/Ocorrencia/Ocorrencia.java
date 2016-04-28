@@ -56,7 +56,7 @@ public class Ocorrencia{
 		this.id = id;
 	}
 
-	@Override
+	
 	public String toString() {
 		return "Ocorrencia [tipo = " + tipo + ", caracteristicas = "
 				+ caracteristicas + ", dataDeEntrada = " + dataDeEntrada

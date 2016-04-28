@@ -6,6 +6,7 @@ public class Usuario {
 	private String senha;
 	private String cpf;
 	private String nome;
+	private int tipo;
 	
 	
 	public String getLogin() {

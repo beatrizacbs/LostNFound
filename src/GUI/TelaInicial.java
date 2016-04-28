@@ -13,6 +13,8 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JToolBar;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaInicial extends JFrame {
 
@@ -44,13 +46,14 @@ public class TelaInicial extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.PINK);
+		contentPane.setForeground(new Color(0, 255, 153));
+		contentPane.setBackground(new Color(0, 255, 153));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(Color.PINK);
+		panel.setBackground(new Color(0, 255, 153));
 		panel.setBounds(83, 40, 287, 62);
 		contentPane.add(panel);
 		panel.setLayout(null);
@@ -66,7 +69,7 @@ public class TelaInicial extends JFrame {
 		lblNewLabel.setFont(new Font("Purisa", Font.BOLD, 12));
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(Color.PINK);
+		panel_1.setBackground(new Color(0, 255, 153));
 		panel_1.setBounds(44, 126, 372, 134);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
@@ -94,6 +97,12 @@ public class TelaInicial extends JFrame {
 		panel_1.add(lblNewLabel_3);
 		
 		JButton btnNovoCadastro = new JButton("Novo Cadastro");
+		btnNovoCadastro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				TelaCadastro frame = new TelaCadastro();
+				frame.setVisible(true);
+			}
+		});
 		btnNovoCadastro.setBounds(187, 53, 157, 25);
 		btnNovoCadastro.setBackground(new Color(220, 20, 60));
 		panel_1.add(btnNovoCadastro);
