@@ -61,7 +61,7 @@ public class AplicacaoLF {
 				String estado = entrada.nextLine();
 				
 				Endereco end = new Endereco(logradouro, bairro, cep, numero, complemento, cidade, estado);
-				Cliente cliente = new Cliente(login, email, senha, end, cpf, telefone, nome);
+				Cliente cliente = new Cliente(login, email, senha, cpf, telefone, nome, end);
 				
 				//TODO  Fazer as exceções depois!
 				/*try{

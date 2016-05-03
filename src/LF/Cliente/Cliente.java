@@ -5,16 +5,17 @@ import LF.Usuario.Usuario;
 public class Cliente extends Usuario {
 
 	private String email;
-	private String endereco;
+	private Endereco endereco;
 	private String telefone;
 	
 	
 	//Construtor da Classe Cliente
-	public Cliente(String login, String email, String senha, Endereco endereco, String cpf, String telefone, String nome)
+	public Cliente(String login, String email, String senha, String cpf, String telefone, String nome, Endereco endereco)
 	{
 		super(login, senha, cpf, nome);
 		this.email = email;
 		this.telefone = telefone;
+		this.endereco = endereco;
 	}
 
 	
@@ -30,18 +31,10 @@ public class Cliente extends Usuario {
 			this.email = email;
 		}
 	}
-	public String getEndereco() {
-		return endereco;
+	public Endereco getEndereco() {
+		return this.endereco;
 	}
-	public void setEndereco(String endereco) {
-		if(endereco == null)
-		{
-			//EXCEÇÃO
-		}else
-		{
-			this.endereco = endereco;
-		}
-	}
+	
 	public String getTelefone() {
 		return telefone;
 	}

@@ -3,12 +3,20 @@ package GUI;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+
 import java.awt.Color;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JPanel;
+
 import java.awt.Font;
+
 import javax.swing.JButton;
+
+import LF.Fachada.Fachada;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaAtualizarEndereco {
 
@@ -20,7 +28,7 @@ public class TelaAtualizarEndereco {
 	private JTextField textField_4;
 	private JTextField textField_5;
 	private JTextField textField_6;
-
+	private Fachada fachada;
 	/**
 	 * Launch the application.
 	 */
@@ -41,6 +49,7 @@ public class TelaAtualizarEndereco {
 	 * Create the application.
 	 */
 	public TelaAtualizarEndereco() {
+		fachada = Fachada.getInstance();
 		initialize();
 	}
 
@@ -144,6 +153,11 @@ public class TelaAtualizarEndereco {
 		panel.add(lblAtualizarEndereo);
 		
 		JButton btnFinalizar = new JButton("Finalizar");
+		btnFinalizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				//fachada.getRepCli().atualizarCliente(textField_6, cpf, novoNome, novoEmail, novoTelefone, novoEndereco, senha)
+			}
+		});
 		btnFinalizar.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		btnFinalizar.setBounds(217, 286, 170, 23);
 		frame.getContentPane().add(btnFinalizar);

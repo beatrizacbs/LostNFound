@@ -29,6 +29,36 @@ public class Fachada {
 	}
 	
 	
+	public IRepositorioAdm getRepAdm() {
+		return repAdm;
+	}
+
+
+	public void setRepAdm(IRepositorioAdm repAdm) {
+		this.repAdm = repAdm;
+	}
+
+
+	public IRepositorioCliente getRepCli() {
+		return repCli;
+	}
+
+
+	public void setRepCli(IRepositorioCliente repCli) {
+		this.repCli = repCli;
+	}
+
+
+	public IRepositorioOcorrencia getRepOc() {
+		return repOc;
+	}
+
+
+	public void setRepOc(IRepositorioOcorrencia repOc) {
+		this.repOc = repOc;
+	}
+
+
 	//Metodos do ADM
 	public void inserirAdm(Administrador adm) throws LoginInvalidoException, CpfInvalidoException,
 	NomeInvalidoException, SenhaInvalidaException, CodigoInvalidoException

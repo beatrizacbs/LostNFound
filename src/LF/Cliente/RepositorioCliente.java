@@ -10,7 +10,6 @@ import excecao.LoginInvalidoException;
 import excecao.NomeInvalidoException;
 import excecao.SenhaInvalidaException;
 import excecao.TelefoneInvalidoException;
-
 import LF.Ocorrencia.Ocorrencia;
 
 public class RepositorioCliente implements IRepositorioCliente {
@@ -77,7 +76,7 @@ public class RepositorioCliente implements IRepositorioCliente {
 			}
 			else if(c == null)
 			{
-				//EXCEÇÃO DE CLIENTE NULL (null pointer)
+				//EXCEÃ‡ÃƒO DE CLIENTE NULL (null pointer)
 				retorno = false;
 			}
 			
@@ -85,16 +84,16 @@ public class RepositorioCliente implements IRepositorioCliente {
 		}
 		else
 		{
-			//EXCEÇÃO DE PILHA CHEIA
+			//EXCEÃ‡ÃƒO DE PILHA CHEIA
 			return false;
 		}
 	}
 
 	public boolean deletarCliente(String cpf)
 	{
-		if(this.topo - this.tamanho == this.tamanho)//VÊ SE A PILHA TA VAZIA
+		if(this.topo - this.tamanho == this.tamanho)//VÃŠ SE A PILHA TA VAZIA
 		{
-			//EXCEÇÃO PRA PILHA VAZIA
+			//EXCEÃ‡ÃƒO PRA PILHA VAZIA
 			return false;
 		}
 		else
@@ -109,7 +108,7 @@ public class RepositorioCliente implements IRepositorioCliente {
 			}
 			else
 			{
-				//EXCEÇAO PARA CLIENTE QUE NAO EXISTE
+				//EXCEÃ‡AO PARA CLIENTE QUE NAO EXISTE
 				return false;
 			}
 			
@@ -126,7 +125,7 @@ public class RepositorioCliente implements IRepositorioCliente {
 			}
 			else
 			{
-				//VAI PRA O PRÓXIMO
+				//VAI PRA O PRÃ“XIMO
 			}
 		}
 		
@@ -158,7 +157,7 @@ public class RepositorioCliente implements IRepositorioCliente {
 	}
 
 	public boolean atualizarCliente(String login, String cpf, String novoNome, String novoEmail, String novoTelefone,
-			String novoEndereco,String senha) throws CpfInvalidoException,TelefoneInvalidoException,
+			String senha) throws CpfInvalidoException,TelefoneInvalidoException,
 			NomeInvalidoException, SenhaInvalidaException, EmailInvalidoException, EnderecoInvalidoException,
 			LoginInvalidoException
 	{
@@ -168,17 +167,28 @@ public class RepositorioCliente implements IRepositorioCliente {
 			c.setNome(novoNome);
 			c.setEmail(novoEmail);
 			c.setTelefone(novoTelefone);
-			c.setEndereco(novoEndereco);
 			
 			return true;
 		}
 		else
-		{	//DEPOIS PODE MUDAR ISSO SE QUISER TÁ AQUI SÓ POR ENQUANTO
+		{	//DEPOIS PODE MUDAR ISSO SE QUISER TÃ� AQUI SÃ“ POR ENQUANTO
 			//this.inserirCliente(new Cliente(null, novoEmail, null, novoEndereco, cpf, novoTelefone, novoNome));
 			return false;
 		}
 			
 				
 	}
+
+	@Override
+	public boolean atualizarCliente(String login, String cpf, String novoNome,
+			String novoEmail, String novoTelefone, String novoEndereco,
+			String senha) throws CpfInvalidoException,
+			TelefoneInvalidoException, NomeInvalidoException,
+			SenhaInvalidaException, EmailInvalidoException,
+			EnderecoInvalidoException, LoginInvalidoException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
 
 }

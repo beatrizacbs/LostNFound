@@ -1,14 +1,19 @@
 package GUI;
 
+import java.awt.Component;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+
 import java.awt.Color;
+
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+
 import java.awt.Font;
+
 import javax.swing.JScrollBar;
 
 public class TelaBuscarObjeto {
@@ -116,5 +121,10 @@ public class TelaBuscarObjeto {
 		JScrollBar scrollBar = new JScrollBar();
 		scrollBar.setBounds(267, 0, 17, 170);
 		panel_1.add(scrollBar);
+	}
+
+	public JFrame getFrame() {
+		// TODO Auto-generated method stub
+		return this.frame;
 	}
 }

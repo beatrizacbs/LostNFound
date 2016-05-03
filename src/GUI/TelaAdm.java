@@ -83,6 +83,13 @@ public class TelaAdm {
 		frame.getContentPane().add(btnObjetosProcurados);
 		
 		JButton btnBuscarObjeto = new JButton("Buscar Objeto");
+		btnBuscarObjeto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO: 
+				TelaBuscarObjeto objeto = new TelaBuscarObjeto();
+				objeto.getFrame().setVisible(true);
+			}
+		});
 		btnBuscarObjeto.setForeground(Color.DARK_GRAY);
 		btnBuscarObjeto.setFont(new Font("Segoe UI", Font.BOLD, 11));
 		btnBuscarObjeto.setBounds(95, 237, 187, 25);
