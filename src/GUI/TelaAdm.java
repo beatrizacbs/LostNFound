@@ -1,11 +1,18 @@
 package GUI;
 
+import java.awt.Component;
 import java.awt.EventQueue;
+import java.awt.Window;
 
 import javax.swing.JFrame;
+
 import java.awt.Color;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaAdm {
 
@@ -50,6 +57,13 @@ public class TelaAdm {
 		frame.getContentPane().add(lblMe);
 		
 		JButton btnCadastrarObjeto = new JButton("Cadastrar Objeto");
+		btnCadastrarObjeto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				TelaCadastroOcorrencia window = new TelaCadastroOcorrencia();
+				window.getFrame().setVisible(true);
+				
+			}
+		});
 		btnCadastrarObjeto.setBounds(12, 111, 187, 25);
 		frame.getContentPane().add(btnCadastrarObjeto);
 		

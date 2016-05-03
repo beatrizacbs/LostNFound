@@ -18,6 +18,14 @@ import javax.swing.JTextField;
 public class TelaCadastroOcorrencia {
 
 	private JFrame frame;
+
+    public JFrame getFrame() {
+        return frame;
+    }
+
+    public void setFrame(JFrame frame) {
+        this.frame = frame;
+    }
 	private JTextField textField;
 
 	/**

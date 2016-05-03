@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JToolBar;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import LF.Fachada.Fachada;
 
 public class TelaInicial extends JFrame {
 
@@ -22,7 +23,8 @@ public class TelaInicial extends JFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
-
+	private Fachada fachada = Fachada.getInstance();
+	
 	/**
 	 * Launch the application.
 	 */
@@ -99,8 +101,8 @@ public class TelaInicial extends JFrame {
 		JButton btnNovoCadastro = new JButton("Novo Cadastro");
 		btnNovoCadastro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				TelaCadastro frame = new TelaCadastro();
-				frame.setVisible(true);
+                            TelaCadastro frame = new TelaCadastro();
+                            frame.setVisible(true);
 			}
 		});
 		btnNovoCadastro.setBounds(187, 53, 157, 25);
@@ -108,6 +110,12 @@ public class TelaInicial extends JFrame {
 		panel_1.add(btnNovoCadastro);
 		
 		JButton btnOk = new JButton("ok");
+                btnOk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+                            TelaCliente windowCli = new TelaCliente();
+                            windowCli.getFrame().setVisible(true);
+			}
+		});
 		btnOk.setBounds(24, 97, 71, 25);
 		panel_1.add(btnOk);
 		

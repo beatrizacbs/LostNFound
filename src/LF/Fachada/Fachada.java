@@ -1,3 +1,4 @@
+package LF.Fachada;
 import excecao.CodigoInvalidoException;
 import excecao.CpfInvalidoException;
 import excecao.EmailInvalidoException;
@@ -14,9 +15,15 @@ import LF.Usuario.*;
 
 public class Fachada {
 	
-	IRepositorioAdm repAdm = new RepositorioAdm(200);
-	IRepositorioCliente repCli = new RepositorioCliente(200);
-	IRepositorioOcorrencia repOc = new RepositorioOcorrencia();
+	private IRepositorioAdm repAdm = new RepositorioAdm(200);
+	private IRepositorioCliente repCli = new RepositorioCliente(200);
+	private IRepositorioOcorrencia repOc = new RepositorioOcorrencia();
+	private static Fachada fachada;
+	
+	private Fachada()
+	{
+		//Tô entendendo mais nada.
+	}
 	
 	
 	//Metodos do ADM
@@ -37,17 +44,17 @@ public class Fachada {
 	}
 	
 	public boolean atualizarAdm(String login, String senha, String codigo, String novoNome, String novoCpf)
-			throws LoginInvalidoException, CpfInvalidoException, NomeInvalidoException, 
-			SenhaInvalidaException, CodigoInvalidoException
-	{
-		return repAdm.atualizarAdm(login, senha,codigo, novoNome, novoCpf);
-	}
-	
-	//Metodos do Cliente
-	public void inserirCliente(Cliente c) throws CpfInvalidoException, TelefoneInvalidoException,
-	NomeInvalidoException, SenhaInvalidaException, EmailInvalidoException, EnderecoInvalidoException
-	{
-		repCli.inserirCliente(c);
+            throws LoginInvalidoException, CpfInvalidoException, NomeInvalidoException, 
+            SenhaInvalidaException, CodigoInvalidoException
+        {
+            return repAdm.atualizarAdm(login, senha,codigo, novoNome, novoCpf);
+        }
+
+        //Metodos do Cliente
+        public void inserirCliente(Cliente c) throws CpfInvalidoException, TelefoneInvalidoException,
+        NomeInvalidoException, SenhaInvalidaException, EmailInvalidoException, EnderecoInvalidoException
+        {
+            repCli.inserirCliente(c);
 	}
 	
 	public boolean deletarCliente(String cpf)
@@ -56,16 +63,16 @@ public class Fachada {
 	}
 	
 	public boolean atualizarCliente(String login, String cpf, String novoNome, String novoEmail,
-			String novoTelefone, String novoEndereco, String senha) throws CpfInvalidoException,
-			TelefoneInvalidoException, NomeInvalidoException, SenhaInvalidaException,
-			EmailInvalidoException, EnderecoInvalidoException, LoginInvalidoException
+            String novoTelefone, String novoEndereco, String senha) throws CpfInvalidoException,
+            TelefoneInvalidoException, NomeInvalidoException, SenhaInvalidaException,
+            EmailInvalidoException, EnderecoInvalidoException, LoginInvalidoException
 	{
-		return repCli.atualizarCliente(login, cpf, novoNome, novoEmail, novoTelefone, novoEndereco, senha);
+            return repCli.atualizarCliente(login, cpf, novoNome, novoEmail, novoTelefone, novoEndereco, senha);
 	}
 	
 	public Cliente procurarCliente(String cpf)
 	{
-		return repCli.procurarCliente(cpf);
+            return repCli.procurarCliente(cpf);
 	}
 	
 	//Metodos da Ocorrencia
@@ -87,5 +94,15 @@ public class Fachada {
 	public Ocorrencia procurarOcorrencia(String id)
 	{
 		return repOc.procurarOcorrencia(id);
+	}
+
+
+	public static Fachada getInstance() {
+		if(fachada == null)
+		{
+			fachada = new Fachada();
+		}
+		
+		return fachada;
 	}
 }

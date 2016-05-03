@@ -15,6 +15,11 @@ import java.awt.event.ActionEvent;
 public class TelaCliente {
 
 	private JFrame frame;
+        
+        public JFrame getFrame()
+        {
+            return this.frame;
+        }
 
 	/**
 	 * Launch the application.

@@ -1,6 +1,8 @@
 import java.util.Scanner;
+
 import LF.Administrador.*;
 import LF.Cliente.*;
+import LF.Fachada.Fachada;
 import LF.Ocorrencia.*;
 import excecao.CodigoInvalidoException;
 import excecao.CpfInvalidoException;
@@ -16,7 +18,7 @@ import excecao.TelefoneInvalidoException;
 public class AplicacaoLF {
 
 	public static void main(String[] args){
-		Fachada fachada = new Fachada();
+		Fachada fachada = Fachada.getInstance();
 		boolean continuar = true;
 		
 		while(continuar == true){
