@@ -7,6 +7,9 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
+import javax.swing.JPanel;
+import java.awt.Font;
+import javax.swing.JScrollBar;
 
 public class TelaBuscarObjeto {
 
@@ -41,33 +44,37 @@ public class TelaBuscarObjeto {
 	private void initialize() {
 		frame = new JFrame();
 		frame.getContentPane().setForeground(new Color(0, 255, 153));
-		frame.getContentPane().setBackground(new Color(0, 255, 153));
-		frame.setBounds(100, 100, 450, 300);
+		frame.getContentPane().setBackground(new Color(112, 128, 144));
+		frame.setBounds(100, 100, 582, 382);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblBuscaDeObjetos = new JLabel("Busca de objetos");
-		lblBuscaDeObjetos.setBounds(152, 12, 165, 15);
-		frame.getContentPane().add(lblBuscaDeObjetos);
-		
-		JLabel lblEscolhaOTipo = new JLabel("Escolha o tipo:");
-		lblEscolhaOTipo.setBounds(48, 49, 139, 15);
+		JLabel lblEscolhaOTipo = new JLabel("ESCOLHA UMA OP\u00C7\u00C3O:");
+		lblEscolhaOTipo.setForeground(Color.DARK_GRAY);
+		lblEscolhaOTipo.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		lblEscolhaOTipo.setBounds(82, 102, 139, 15);
 		frame.getContentPane().add(lblEscolhaOTipo);
 		
-		JRadioButton rdbtnEletrnico = new JRadioButton("Eletrônico");
-		rdbtnEletrnico.setBounds(27, 72, 139, 23);
+		JRadioButton rdbtnEletrnico = new JRadioButton("Eletronico");
+		rdbtnEletrnico.setBackground(new Color(112, 128, 144));
+		rdbtnEletrnico.setForeground(new Color(0, 0, 0));
+		rdbtnEletrnico.setBounds(92, 157, 139, 23);
 		frame.getContentPane().add(rdbtnEletrnico);
 		
-		JRadioButton rdbtnEscritrio = new JRadioButton("Escritório");
-		rdbtnEscritrio.setBounds(27, 99, 139, 23);
+		JRadioButton rdbtnEscritrio = new JRadioButton("Escritorio");
+		rdbtnEscritrio.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		rdbtnEscritrio.setBackground(new Color(112, 128, 144));
+		rdbtnEscritrio.setBounds(92, 131, 139, 23);
 		frame.getContentPane().add(rdbtnEscritrio);
 		
-		JRadioButton rdbtnAdereo = new JRadioButton("Adereço");
-		rdbtnAdereo.setBounds(27, 126, 139, 23);
+		JRadioButton rdbtnAdereo = new JRadioButton("Adereco");
+		rdbtnAdereo.setBackground(new Color(112, 128, 144));
+		rdbtnAdereo.setBounds(92, 183, 139, 23);
 		frame.getContentPane().add(rdbtnAdereo);
 		
 		JRadioButton rdbtnVestimenta = new JRadioButton("Vestimenta");
-		rdbtnVestimenta.setBounds(27, 153, 139, 23);
+		rdbtnVestimenta.setBackground(new Color(112, 128, 144));
+		rdbtnVestimenta.setBounds(92, 209, 139, 23);
 		frame.getContentPane().add(rdbtnVestimenta);
 		
 		JLabel label = new JLabel("");
@@ -75,15 +82,39 @@ public class TelaBuscarObjeto {
 		frame.getContentPane().add(label);
 		
 		JButton btnNewButton = new JButton("Buscar");
-		btnNewButton.setBounds(48, 213, 101, 25);
+		btnNewButton.setForeground(new Color(105, 105, 105));
+		btnNewButton.setBounds(92, 275, 100, 23);
 		frame.getContentPane().add(btnNewButton);
 		
 		JRadioButton rdbtnOutro = new JRadioButton("Outro");
-		rdbtnOutro.setBounds(27, 180, 139, 25);
+		rdbtnOutro.setBackground(new Color(112, 128, 144));
+		rdbtnOutro.setBounds(92, 235, 139, 25);
 		frame.getContentPane().add(rdbtnOutro);
 		
-		JLabel lblAquiAGente = new JLabel("aqui a gente coloca o lista");
-		lblAquiAGente.setBounds(221, 103, 217, 15);
+		JLabel lblAquiAGente = new JLabel("LISTA DE OBJETOS:");
+		lblAquiAGente.setForeground(Color.DARK_GRAY);
+		lblAquiAGente.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		lblAquiAGente.setBounds(339, 102, 217, 15);
 		frame.getContentPane().add(lblAquiAGente);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(0, 0, 566, 64);
+		frame.getContentPane().add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblBuscaDeObjetos = new JLabel("BUSCA DE OBJETOS");
+		lblBuscaDeObjetos.setBounds(184, 22, 171, 31);
+		panel.add(lblBuscaDeObjetos);
+		lblBuscaDeObjetos.setForeground(Color.DARK_GRAY);
+		lblBuscaDeObjetos.setFont(new Font("Segoe UI", Font.BOLD, 18));
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(258, 128, 284, 170);
+		frame.getContentPane().add(panel_1);
+		panel_1.setLayout(null);
+		
+		JScrollBar scrollBar = new JScrollBar();
+		scrollBar.setBounds(267, 0, 17, 170);
+		panel_1.add(scrollBar);
 	}
 }

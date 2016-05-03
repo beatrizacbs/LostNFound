@@ -15,14 +15,17 @@ import LF.Usuario.*;
 
 public class Fachada {
 	
-	private IRepositorioAdm repAdm = new RepositorioAdm(200);
-	private IRepositorioCliente repCli = new RepositorioCliente(200);
-	private IRepositorioOcorrencia repOc = new RepositorioOcorrencia();
+	private IRepositorioAdm repAdm;
+	private IRepositorioCliente repCli;
+	private IRepositorioOcorrencia repOc;
 	private static Fachada fachada;
 	
 	private Fachada()
 	{
-		//Tô entendendo mais nada.
+		repAdm = new RepositorioAdm(500);
+		repCli = new RepositorioCliente(500);
+		repOc = new RepositorioOcorrencia();
+		
 	}
 	
 	
