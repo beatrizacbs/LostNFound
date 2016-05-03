@@ -155,7 +155,7 @@ public class TelaAtualizarEndereco {
 		JButton btnFinalizar = new JButton("Finalizar");
 		btnFinalizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//fachada.getRepCli().atualizarCliente(textField_6, cpf, novoNome, novoEmail, novoTelefone, novoEndereco, senha)
+				
 			}
 		});
 		btnFinalizar.setFont(new Font("Segoe UI", Font.BOLD, 12));

@@ -4,9 +4,9 @@ public class ControladorCilente {
 	
 	private RepositorioCliente reposditorioCliente;
 	
-	public boolean atualizarEndereco(String logradouro, String bairro, String cep, String numero, String cidade, String estado, String complemento)
+	public boolean atualizarEndereco(Endereco end)
 	{
-		
+		this.reposditorioCliente.atualizarEndereco(end);
 		return true;
 	}
 
