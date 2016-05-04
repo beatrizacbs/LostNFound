@@ -108,7 +108,7 @@ public class TelaBuscarObjeto {
 		panel.setLayout(null);
 		
 		JLabel lblBuscaDeObjetos = new JLabel("BUSCA DE OBJETOS");
-		lblBuscaDeObjetos.setBounds(184, 22, 171, 31);
+		lblBuscaDeObjetos.setBounds(205, 22, 171, 31);
 		panel.add(lblBuscaDeObjetos);
 		lblBuscaDeObjetos.setForeground(Color.DARK_GRAY);
 		lblBuscaDeObjetos.setFont(new Font("Segoe UI", Font.BOLD, 18));
