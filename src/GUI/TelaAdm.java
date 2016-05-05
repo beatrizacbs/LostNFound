@@ -22,6 +22,11 @@ import javax.swing.JPanel;
 public class TelaAdm {
 
 	private JFrame frame;
+	
+	public JFrame getFrame()
+	{
+		return this.frame;
+	}
 
 	/**
 	 * Launch the application.

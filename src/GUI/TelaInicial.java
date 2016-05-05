@@ -21,9 +21,8 @@ public class TelaInicial extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
 	private Fachada fachada = Fachada.getInstance();
+	private JTextField textField_1;
 	
 	/**
 	 * Launch the application.
@@ -46,79 +45,78 @@ public class TelaInicial extends JFrame {
 	 */
 	public TelaInicial() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 582, 450);
 		contentPane = new JPanel();
 		contentPane.setForeground(new Color(0, 255, 153));
-		contentPane.setBackground(new Color(0, 255, 153));
+		contentPane.setBackground(new Color(112, 128, 144));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(0, 255, 153));
-		panel.setBounds(83, 40, 287, 62);
+		panel.setBounds(0, 0, 566, 77);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblBemVindoAo = new JLabel("Bem vindo ao Lost&Found.");
-		lblBemVindoAo.setBounds(12, 12, 208, 27);
-		panel.add(lblBemVindoAo);
-		lblBemVindoAo.setFont(new Font("Purisa", Font.BOLD, 12));
+		JLabel lblCadastro = new JLabel("Lost & Found");
+		lblCadastro.setForeground(Color.DARK_GRAY);
+		lblCadastro.setFont(new Font("Segoe UI", Font.BOLD, 18));
+		lblCadastro.setBounds(226, 11, 119, 34);
+		panel.add(lblCadastro);
 		
-		JLabel lblNewLabel = new JLabel("Tudo o que você precisa está aqui.");
-		lblNewLabel.setBounds(22, 35, 291, 15);
-		panel.add(lblNewLabel);
-		lblNewLabel.setFont(new Font("Purisa", Font.BOLD, 12));
+		JLabel lblTudoQueVoc = new JLabel("Tudo que voc\u00EA procura est\u00E1 aqui");
+		lblTudoQueVoc.setBounds(207, 45, 176, 21);
+		lblTudoQueVoc.setForeground(Color.DARK_GRAY);
+		lblTudoQueVoc.setFont(new Font("Segoe UI", Font.BOLD, 10));
+		panel.add(lblTudoQueVoc);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(new Color(0, 255, 153));
-		panel_1.setBounds(44, 126, 372, 134);
-		contentPane.add(panel_1);
-		panel_1.setLayout(null);
+		JLabel lblLogin = new JLabel("Login:");
+		lblLogin.setForeground(Color.DARK_GRAY);
+		lblLogin.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		lblLogin.setBounds(162, 150, 58, 20);
+		contentPane.add(lblLogin);
 		
-		JLabel lblNewLabel_1 = new JLabel("Login:");
-		lblNewLabel_1.setBounds(0, 0, 70, 15);
-		panel_1.add(lblNewLabel_1);
+		textField = new JTextField();
+		textField.setBounds(217, 151, 153, 20);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblSenha_1 = new JLabel("Senha:");
+		lblSenha_1.setForeground(Color.DARK_GRAY);
+		lblSenha_1.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		lblSenha_1.setBounds(162, 195, 39, 14);
+		contentPane.add(lblSenha_1);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(0, 18, 114, 19);
-		panel_1.add(textField_1);
+		textField_1.setBounds(217, 193, 153, 20);
+		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
-		JLabel lblNewLabel_2 = new JLabel("Senha:");
-		lblNewLabel_2.setBounds(0, 53, 70, 15);
-		panel_1.add(lblNewLabel_2);
-		
-		textField_2 = new JPasswordField();
-		textField_2.setBounds(0, 70, 114, 19);
-		panel_1.add(textField_2);
-		textField_2.setColumns(10);
-		
-		JLabel lblNewLabel_3 = new JLabel((String) null);
-		lblNewLabel_3.setBounds(0, 58, 70, 15);
-		panel_1.add(lblNewLabel_3);
+		JButton btnFinalizar = new JButton("Entrar");
+		btnFinalizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(textField.getText().length() == 11)
+				{
+					// TODO: ele tem que procurar o cliente e verificar, mas depois fa�o isso
+					TelaCliente windowCli = new TelaCliente();
+                    windowCli.getFrame().setVisible(true);
+					
+				}
+				else if(textField.getText().length() == 4)
+				{
+					TelaAdm windowAdm = new TelaAdm();
+					windowAdm.getFrame().setVisible(true);
+				}
+			}
+		});
+		btnFinalizar.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		btnFinalizar.setBounds(162, 234, 102, 20);
+		contentPane.add(btnFinalizar);
 		
 		JButton btnNovoCadastro = new JButton("Novo Cadastro");
-		btnNovoCadastro.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-                            TelaCadastro frame = new TelaCadastro();
-                            frame.setVisible(true);
-			}
-		});
-		btnNovoCadastro.setBounds(187, 53, 157, 25);
-		btnNovoCadastro.setBackground(new Color(220, 20, 60));
-		panel_1.add(btnNovoCadastro);
-		
-		JButton btnOk = new JButton("ok");
-                btnOk.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-                            TelaCliente windowCli = new TelaCliente();
-                            windowCli.getFrame().setVisible(true);
-			}
-		});
-		btnOk.setBounds(24, 97, 71, 25);
-		panel_1.add(btnOk);
-		
+		btnNovoCadastro.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		btnNovoCadastro.setBounds(274, 233, 129, 23);
+		contentPane.add(btnNovoCadastro);
 		
 	}
 }
