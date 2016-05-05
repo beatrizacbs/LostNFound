@@ -1,13 +1,32 @@
 package LF.Cliente;
 
+import excecao.ClienteInexistenteException;
+
 public class ControladorCilente {
 	
 	private RepositorioCliente reposditorioCliente;
 	
-	public boolean atualizarEndereco(Endereco end)
+	public boolean atualizarEndereco(String cpf, Endereco end)
 	{
-		this.reposditorioCliente.atualizarEndereco(end);
-		return true;
+		if(this.reposditorioCliente.procurarCliente(cpf) != null)
+		{
+			
+			// TODO: tem que colocar pra atualizar aqui mas eu ainda nao sei como
+			return true;
+			
+		} else
+		{
+			try {
+				throw new ClienteInexistenteException();
+			} catch (ClienteInexistenteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			return false;
+		}
+			
+			
 	}
 
 }
