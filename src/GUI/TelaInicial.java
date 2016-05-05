@@ -97,7 +97,8 @@ public class TelaInicial extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				if(textField.getText().length() == 11)
 				{
-					// TODO: ele tem que procurar o cliente e verificar, mas depois faço isso
+					// TODO: ele tem que procurar o cliente e verificar pra ver se bate com a senha, 
+					//mas depois faço isso
 					TelaCliente windowCli = new TelaCliente();
                     windowCli.getFrame().setVisible(true);
 					
@@ -114,6 +115,13 @@ public class TelaInicial extends JFrame {
 		contentPane.add(btnFinalizar);
 		
 		JButton btnNovoCadastro = new JButton("Novo Cadastro");
+		btnNovoCadastro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				TelaCadastro frame = new TelaCadastro();
+                frame.setVisible(true);
+                // TODO: tem que arrumar um jeito de fechar a janela enterior quando abrir uma nova
+			}
+		});
 		btnNovoCadastro.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		btnNovoCadastro.setBounds(274, 233, 129, 23);
 		contentPane.add(btnNovoCadastro);
