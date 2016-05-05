@@ -12,6 +12,9 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Toolkit;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.SystemColor;
 
 public class TelaCadastro extends JFrame {
 
@@ -215,7 +218,20 @@ public class TelaCadastro extends JFrame {
 		
 		JButton btnFinalizar = new JButton("Finalizar");
 		btnFinalizar.setFont(new Font("Segoe UI", Font.BOLD, 12));
-		btnFinalizar.setBounds(236, 365, 120, 23);
+		btnFinalizar.setBounds(290, 364, 120, 23);
 		contentPane.add(btnFinalizar);
+		
+		JButton btnSair = new JButton("Voltar");
+		btnSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				//System.exit(0);
+				// esse omando fecha tudo. Quero só fechar a janela atual
+			}
+		});
+		btnSair.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		btnSair.setBounds(172, 364, 108, 23);
+		contentPane.add(btnSair);
+		btnSair.setForeground(SystemColor.desktop);
 	}
 }
