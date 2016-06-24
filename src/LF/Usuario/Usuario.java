@@ -12,6 +12,7 @@ public class Usuario {
 	public String getLogin() {
 		return login;
 	}
+	
 	public void setLogin(String login) {
 		if(login == null)
 		{
@@ -22,9 +23,11 @@ public class Usuario {
 			this.login = login;
 		}
 	}
+	
 	public String getSenha() {
 		return senha;
 	}
+	
 	public void setSenha(String senha) {
 		if(senha == null)
 		{
@@ -35,9 +38,11 @@ public class Usuario {
 			this.senha = senha;
 		}
 	}
+	
 	public String getCpf() {
 		return cpf;
 	}
+	
 	public void setCpf(String cpf) {
 		
 		if(cpf == null)
@@ -50,9 +55,11 @@ public class Usuario {
 			this.cpf = cpf;
 		}
 	}
+	
 	public String getNome() {
 		return nome;
 	}
+	
 	public void setNome(String nome) {
 		if(nome == null)
 		{

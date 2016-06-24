@@ -15,51 +15,17 @@ import LF.Usuario.*;
 
 public class Fachada {
 	
-	private IRepositorioAdm repAdm;
-	private IRepositorioCliente repCli;
-	private IRepositorioOcorrencia repOc;
+	private RpositorioUsuario repUser;
+	private RepositorioOcorrencia repOc;
 	private static Fachada fachada;
 	
 	private Fachada()
 	{
-		repAdm = new RepositorioAdm(500);
-		repCli = new RepositorioCliente(500);
-		repOc = new RepositorioOcorrencia();
-		
-	}
-	
-	
-	public IRepositorioAdm getRepAdm() {
-		return repAdm;
+		repUser.getInstance();
+		repOc.getInstance();
 	}
 
-
-	public void setRepAdm(IRepositorioAdm repAdm) {
-		this.repAdm = repAdm;
-	}
-
-
-	public IRepositorioCliente getRepCli() {
-		return repCli;
-	}
-
-
-	public void setRepCli(IRepositorioCliente repCli) {
-		this.repCli = repCli;
-	}
-
-
-	public IRepositorioOcorrencia getRepOc() {
-		return repOc;
-	}
-
-
-	public void setRepOc(IRepositorioOcorrencia repOc) {
-		this.repOc = repOc;
-	}
-
-
-	//Metodos do ADM
+	//METODOS ADM
 	public void inserirAdm(Administrador adm) throws LoginInvalidoException, CpfInvalidoException,
 	NomeInvalidoException, SenhaInvalidaException, CodigoInvalidoException
 	{

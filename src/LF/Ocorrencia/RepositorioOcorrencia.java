@@ -1,93 +1,46 @@
 package LF.Ocorrencia;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
-import excecao.IdInvalidoException;
+public class RepositorioOcorrencia {
 
-
-public class RepositorioOcorrencia implements IRepositorioOcorrencia
-{
-
-	ArrayList<Ocorrencia> listaDeOcorrencia = new ArrayList<Ocorrencia>();
+	private Map<String, Ocorrencia> ocorrencias;
+	private static RepositorioOcorrencia instance = null;
 	
-	public void inserir(Ocorrencia teste)
+	private RepositorioOcorrencia()
 	{
-		this.listaDeOcorrencia.add(teste);
+		ocorrencias = new HashMap<String, Ocorrencia>();
 	}
 	
-	public List<Ocorrencia> ListarOcorrencia() {
+	public static RepositorioOcorrencia getInstance()
+	{
+		if(instance == null)
+		{
+			instance = new RepositorioOcorrencia();
+		}
 		
-		return listaDeOcorrencia;
+		return instance;
 	}
 	
-	public String toString()
+	public void addOcorrencia(Ocorrencia o)
 	{
-		String st = "";
-		
-		for(Ocorrencia p : this.listaDeOcorrencia)
-		{
-			st = st + p.toString() + "\n";
-		}
-		return st;
+		this.ocorrencias.put(o.getId(), o);
 	}
 	
-	public void inserirOcorrencia(Ocorrencia ocorrencia) throws IdInvalidoException
+	public void removeOcorrencia(String id)
 	{
-		
-		Ocorrencia p = this.procurarOcorrencia(ocorrencia.getId());
-		if(p.equals(null))
-		{
-			 listaDeOcorrencia.add(ocorrencia);
-		}
-		else
-		{
-			throw new IdInvalidoException();
-		}
-			
+		this.ocorrencias.remove(id);
+	}
+
+	public void updateOcorrencia(Ocorrencia o)
+	{
+		this.ocorrencias.replace(o.getId(), o);
 	}
 	
-
-	public boolean deletarOcorrencia(String id)
-	{	
-		boolean retorno = false;
-		for(Ocorrencia ocorrencia : listaDeOcorrencia)
-		{
-			if(ocorrencia.getId().equals(id))
-			{
-				int indice = listaDeOcorrencia.indexOf(ocorrencia);
-				listaDeOcorrencia.remove(indice);
-				retorno = true;
-			}
-		}
-		return retorno;
-	}
-
-	public boolean atualizarOcorrencia(Ocorrencia ocorrencia)
+	public Ocorrencia procuraOcorrencia(String id)
 	{
-		
-		for(Ocorrencia p : listaDeOcorrencia)
-		{
-			if(p.getId().equals(ocorrencia.getId()))
-			{
-				int indice = listaDeOcorrencia.indexOf(p);
-				listaDeOcorrencia.remove(indice);
-				listaDeOcorrencia.add(ocorrencia);
-			}
-		}
-		return false;
-	}
-
-	public Ocorrencia procurarOcorrencia(String id)
-	{
-		Ocorrencia retorno = null;
-		for(Ocorrencia ocorrencia : listaDeOcorrencia)
-		{
-			if(ocorrencia.getId().equals(id));
-			retorno = ocorrencia;
-			break;
-		}
-		return retorno;
+		return this.ocorrencias.get(id);
 	}
 	
 }
