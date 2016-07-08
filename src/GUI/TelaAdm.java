@@ -18,6 +18,7 @@ import javax.swing.JTextPane;
 import java.awt.Font;
 import java.awt.SystemColor;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 
 public class TelaAdm {
 
@@ -58,87 +59,96 @@ public class TelaAdm {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(112, 128, 144));
 		frame.getContentPane().setForeground(new Color(0, 255, 153));
-		frame.setBounds(100, 100, 582, 382);
+		frame.setBounds(100, 100, 795, 535);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
-		JButton btnCadastrarObjeto = new JButton("Cadastrar Objeto");
-		btnCadastrarObjeto.setForeground(Color.DARK_GRAY);
-		btnCadastrarObjeto.setFont(new Font("Segoe UI", Font.BOLD, 11));
-		btnCadastrarObjeto.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				TelaCadastroOcorrencia window = new TelaCadastroOcorrencia();
-				window.getFrame().setVisible(true);
-				
-			}
-		});
-		btnCadastrarObjeto.setBounds(95, 201, 187, 25);
-		frame.getContentPane().add(btnCadastrarObjeto);
-		
-		JButton btnObjetosEncontrados = new JButton("Dono encontrado");
-		btnObjetosEncontrados.setForeground(Color.DARK_GRAY);
-		btnObjetosEncontrados.setFont(new Font("Segoe UI", Font.BOLD, 11));
-		btnObjetosEncontrados.setBounds(292, 201, 187, 25);
-		frame.getContentPane().add(btnObjetosEncontrados);
-		
-		JButton btnObjetosProcurados = new JButton("Objetos procurados");
-		btnObjetosProcurados.setForeground(Color.DARK_GRAY);
-		btnObjetosProcurados.setFont(new Font("Segoe UI", Font.BOLD, 11));
-		btnObjetosProcurados.setBounds(292, 237, 187, 25);
-		frame.getContentPane().add(btnObjetosProcurados);
-		
-		JButton btnBuscarObjeto = new JButton("Buscar Objeto");
-		btnBuscarObjeto.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				// TODO: 
-				TelaBuscarObjeto objeto = new TelaBuscarObjeto();
-				objeto.getFrame().setVisible(true);
-			}
-		});
-		btnBuscarObjeto.setForeground(Color.DARK_GRAY);
-		btnBuscarObjeto.setFont(new Font("Segoe UI", Font.BOLD, 11));
-		btnBuscarObjeto.setBounds(95, 237, 187, 25);
-		frame.getContentPane().add(btnBuscarObjeto);
 		
 		JTextPane txtpnBemvindoAdministrador = new JTextPane();
 		txtpnBemvindoAdministrador.setText("Bem-vindo, administrador!");
 		txtpnBemvindoAdministrador.setBounds(322, 46, -139, 20);
 		frame.getContentPane().add(txtpnBemvindoAdministrador);
 		
-		JLabel lblBemvindoAdministrador = new JLabel("Bem-vindo, administrador!");
-		lblBemvindoAdministrador.setForeground(Color.DARK_GRAY);
-		lblBemvindoAdministrador.setFont(new Font("Segoe UI", Font.BOLD, 11));
-		lblBemvindoAdministrador.setBounds(405, 11, 151, 14);
-		frame.getContentPane().add(lblBemvindoAdministrador);
-		
-		JButton btnEditarAdministrador = new JButton("Editar");
-		btnEditarAdministrador.setForeground(new Color(105, 105, 105));
-		btnEditarAdministrador.setFont(new Font("Segoe UI", Font.BOLD, 9));
-		btnEditarAdministrador.setBounds(405, 36, 74, 15);
-		frame.getContentPane().add(btnEditarAdministrador);
-		
-		JButton btnSair = new JButton("Sair");
-		btnSair.setForeground(new Color(105, 105, 105));
-		btnSair.setFont(new Font("Segoe UI", Font.BOLD, 9));
-		btnSair.setBounds(482, 36, 74, 15);
-		frame.getContentPane().add(btnSair);
-		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(211, 211, 211));
-		panel.setBounds(0, 0, 566, 66);
+		panel.setBounds(0, 0, 783, 66);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
 		JLabel lblMe = new JLabel("MENU ADMINISTRADOR");
-		lblMe.setBounds(107, 11, 213, 44);
+		lblMe.setBounds(107, 11, 295, 44);
 		panel.add(lblMe);
 		lblMe.setForeground(Color.DARK_GRAY);
-		lblMe.setFont(new Font("Segoe UI", Font.BOLD, 18));
+		lblMe.setFont(new Font("Dialog", Font.BOLD, 18));
 		
-		JLabel lblCentralDeOcorrencia = new JLabel("Central de Ocorrencias");
+		JLabel lblBemvindoAdministrador = new JLabel("Bem-vindo, administrador!");
+		lblBemvindoAdministrador.setBounds(560, 12, 198, 12);
+		panel.add(lblBemvindoAdministrador);
+		lblBemvindoAdministrador.setForeground(Color.DARK_GRAY);
+		lblBemvindoAdministrador.setFont(new Font("Segoe UI", Font.BOLD, 11));
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(UIManager.getColor("Button.darkShadow"));
+		panel_1.setBounds(151, 157, 495, 203);
+		frame.getContentPane().add(panel_1);
+		panel_1.setLayout(null);
+		
+		JButton btnBuscarObjeto = new JButton("Buscar Ocorrência");
+		btnBuscarObjeto.setBounds(171, 73, 152, 24);
+		panel_1.add(btnBuscarObjeto);
+		btnBuscarObjeto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO: 
+				TelaProcurarObj objeto = new TelaProcurarObj();
+				objeto.getFrame().setVisible(true);
+				frame.dispose();
+			}
+		});
+		btnBuscarObjeto.setForeground(Color.DARK_GRAY);
+		btnBuscarObjeto.setFont(new Font("Segoe UI", Font.BOLD, 11));
+		
+		JButton btnCadastrarObjeto = new JButton("Cadastrar Ocorrência");
+		btnCadastrarObjeto.setBounds(154, 109, 183, 25);
+		panel_1.add(btnCadastrarObjeto);
+		btnCadastrarObjeto.setForeground(Color.DARK_GRAY);
+		btnCadastrarObjeto.setFont(new Font("Segoe UI", Font.BOLD, 11));
+		
+		JLabel lblCentralDeOcorrencia = new JLabel("Central de Ocorrências");
+		lblCentralDeOcorrencia.setBounds(118, 22, 256, 25);
+		panel_1.add(lblCentralDeOcorrencia);
 		lblCentralDeOcorrencia.setForeground(new Color(51, 51, 51));
 		lblCentralDeOcorrencia.setFont(new Font("Segoe UI", Font.BOLD, 18));
-		lblCentralDeOcorrencia.setBounds(197, 145, 202, 25);
-		frame.getContentPane().add(lblCentralDeOcorrencia);
+		
+		JButton btnAtualizarOcorrncia = new JButton("Atualizar Ocorrência");
+		btnAtualizarOcorrncia.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaAtualizarObj windowTelaAtualizarObj = new TelaAtualizarObj();
+				windowTelaAtualizarObj.setVisible(true);
+				frame.dispose();
+			}
+		});
+		btnAtualizarOcorrncia.setBounds(143, 146, 206, 25);
+		panel_1.add(btnAtualizarOcorrncia);
+		
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaInicial windowTelaInicial = new TelaInicial();
+				windowTelaInicial.setVisible(true);
+				frame.dispose();
+			}
+		});
+		btnVoltar.setBounds(594, 446, 117, 25);
+		frame.getContentPane().add(btnVoltar);
+		btnCadastrarObjeto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				TelaCadastroOcorrencia windowTelaInicial = new TelaCadastroOcorrencia();
+				windowTelaInicial.getFrame().setVisible(true);
+				frame.dispose();
+				
+			}
+		});
 	}
+	
+	
 }

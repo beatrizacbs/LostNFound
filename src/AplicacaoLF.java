@@ -2,17 +2,17 @@ import java.util.Scanner;
 
 import LF.Administrador.*;
 import LF.Cliente.*;
+import LF.Excecoes.CodigoInvalidoException;
+import LF.Excecoes.CpfInvalidoException;
+import LF.Excecoes.EmailInvalidoException;
+import LF.Excecoes.EnderecoInvalidoException;
+import LF.Excecoes.IdInvalidoException;
+import LF.Excecoes.LoginInvalidoException;
+import LF.Excecoes.NomeInvalidoException;
+import LF.Excecoes.SenhaInvalidaException;
+import LF.Excecoes.TelefoneInvalidoException;
 import LF.Fachada.Fachada;
 import LF.Ocorrencia.*;
-import excecao.CodigoInvalidoException;
-import excecao.CpfInvalidoException;
-import excecao.EmailInvalidoException;
-import excecao.EnderecoInvalidoException;
-import excecao.IdInvalidoException;
-import excecao.LoginInvalidoException;
-import excecao.NomeInvalidoException;
-import excecao.SenhaInvalidaException;
-import excecao.TelefoneInvalidoException;
 
 
 public class AplicacaoLF {

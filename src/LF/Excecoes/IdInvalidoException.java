@@ -1,4 +1,4 @@
-package excecao;
+package LF.Excecoes;
 
 public class IdInvalidoException extends Exception{
 

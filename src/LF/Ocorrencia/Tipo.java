@@ -2,9 +2,9 @@ package LF.Ocorrencia;
 
 public enum Tipo {
 	
-	eletronic("Eletrônico"), 
-	escritorio("Escritório"),
-	adereco("Adereço"),
+	eletronic("Eletronico"), 
+	escritorio("Escritorio"),
+	adereco("Adereco"),
 	vestimenta("Vesimenta"),
 	outro("Outros");
 	

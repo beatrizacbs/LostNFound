@@ -2,6 +2,8 @@ package LF.Usuario;
 
 import java.util.Collection;
 
+import LF.Excecoes.UsuarioInexistenteException;
+
 public interface IRpositorioUsuario {
 	
 	
@@ -9,10 +11,10 @@ public interface IRpositorioUsuario {
 	
 	public void removeUsuario(String codigo);
 	
-	public Usuario procuraUsuario(String codigo);
+	public Usuario procuraUsuario(String codigo) throws UsuarioInexistenteException;
 	
 	public void updateUsuario(String codigo, Usuario u);
 	
-	public Collection<Usuario> getUsuario();
+	public Collection getUsuario();
 
 }

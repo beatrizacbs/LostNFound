@@ -1,5 +1,6 @@
 package LF.Ocorrencia;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,4 +44,8 @@ public class RepositorioOcorrencia {
 		return this.ocorrencias.get(id);
 	}
 	
+	public Collections getOcorrencias()
+	{
+		return (Collections) ocorrencias.values();
+	}
 }

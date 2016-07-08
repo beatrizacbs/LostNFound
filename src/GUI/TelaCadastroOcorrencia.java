@@ -14,10 +14,22 @@ import javax.swing.JTextArea;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.border.TitledBorder;
+import javax.swing.border.LineBorder;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaCadastroOcorrencia {
 
 	private JFrame frame;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
+	private JTextField textField_5;
 
     public JFrame getFrame() {
         return frame;
@@ -26,7 +38,6 @@ public class TelaCadastroOcorrencia {
     public void setFrame(JFrame frame) {
         this.frame = frame;
     }
-	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -57,79 +68,139 @@ public class TelaCadastroOcorrencia {
 	private void initialize() {
 		frame = new JFrame();
 		frame.getContentPane().setForeground(new Color(0, 255, 153));
-		frame.getContentPane().setBackground(new Color(112, 128, 144));
-		frame.setBounds(100, 100, 582, 450);
+		frame.getContentPane().setBackground(UIManager.getColor("Button.darkShadow"));
+		frame.setBounds(100, 100, 796, 523);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblEscolhaOTipo = new JLabel("Escolha o tipo");
-		lblEscolhaOTipo.setBounds(24, 79, 107, 15);
-		frame.getContentPane().add(lblEscolhaOTipo);
-		
-		JRadioButton rdbtnEletrnico = new JRadioButton("Eletrônico");
-		rdbtnEletrnico.setBackground(new Color(0, 255, 153));
-		rdbtnEletrnico.setBounds(24, 101, 123, 23);
-		frame.getContentPane().add(rdbtnEletrnico);
-		
-		JRadioButton rdbtnEscritrio = new JRadioButton("Escritório");
-		rdbtnEscritrio.setBackground(new Color(0, 255, 153));
-		rdbtnEscritrio.setBounds(24, 132, 107, 23);
-		frame.getContentPane().add(rdbtnEscritrio);
-		
-		JRadioButton rdbtnAdereo = new JRadioButton("Adereço");
-		rdbtnAdereo.setBackground(new Color(0, 255, 153));
-		rdbtnAdereo.setBounds(24, 164, 123, 23);
-		frame.getContentPane().add(rdbtnAdereo);
-		
-		JRadioButton rdbtnVestimenta = new JRadioButton("Vestimenta");
-		rdbtnVestimenta.setBackground(new Color(0, 255, 153));
-		rdbtnVestimenta.setBounds(24, 197, 123, 30);
-		frame.getContentPane().add(rdbtnVestimenta);
-		
-		JRadioButton rdbtnOutro = new JRadioButton("Outro");
-		rdbtnOutro.setBackground(new Color(0, 255, 153));
-		rdbtnOutro.setBounds(30, 250, 123, 23);
-		frame.getContentPane().add(rdbtnOutro);
-		
-		JLabel lblDescrevaOObjeto = new JLabel("Caracteristicas Basicas:");
-		lblDescrevaOObjeto.setFont(new Font("Segoe UI", Font.BOLD, 14));
-		lblDescrevaOObjeto.setBounds(317, 103, 159, 15);
-		frame.getContentPane().add(lblDescrevaOObjeto);
-		
-		JLabel lblDadosGerais = new JLabel("Caracteristicas Adicionais:");
-		lblDadosGerais.setBounds(337, 254, 139, 15);
-		frame.getContentPane().add(lblDadosGerais);
-		
-		JLabel lblCor = new JLabel("Cor");
-		lblCor.setBounds(284, 283, 70, 15);
-		frame.getContentPane().add(lblCor);
-		
-		textField = new JTextField();
-		textField.setBounds(317, 279, 200, 23);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
-		
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 566, 62);
+		panel.setBounds(0, 0, 784, 62);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblCadas = new JLabel("CADASTRAR OCORRENCIA");
-		lblCadas.setBounds(176, 11, 244, 40);
+		JLabel lblCadas = new JLabel("CADASTRAR OCORRÊNCIA");
+		lblCadas.setBounds(176, 11, 343, 40);
 		panel.add(lblCadas);
 		lblCadas.setForeground(Color.DARK_GRAY);
 		lblCadas.setFont(new Font("Segoe UI", Font.BOLD, 18));
 		
-		JLabel lblDanosFsicos = new JLabel("Danos f\u00EDsicos");
-		lblDanosFsicos.setBounds(284, 320, 70, 14);
-		frame.getContentPane().add(lblDanosFsicos);
+		JPanel panel_1 = new JPanel();
+		panel_1.setBorder(new TitledBorder(new LineBorder(new Color(153, 153, 153), 3), "Tipo", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(51, 51, 51)));
+		panel_1.setBackground(UIManager.getColor("Button.darkShadow"));
+		panel_1.setBounds(85, 129, 208, 276);
+		frame.getContentPane().add(panel_1);
+		panel_1.setLayout(null);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(293, 127, 224, 116);
-		frame.getContentPane().add(scrollPane);
+		JRadioButton rdbtnEletrnico = new JRadioButton("Eletrônico");
+		rdbtnEletrnico.setBounds(45, 77, 123, 23);
+		panel_1.add(rdbtnEletrnico);
+		rdbtnEletrnico.setBackground(UIManager.getColor("Button.darkShadow"));
 		
-		JLabel lblTamanho = new JLabel("Tamanho");
-		lblTamanho.setBounds(294, 345, 46, 14);
-		frame.getContentPane().add(lblTamanho);
+		JRadioButton rdbtnEscritrio = new JRadioButton("Escritório");
+		rdbtnEscritrio.setBounds(45, 120, 107, 23);
+		panel_1.add(rdbtnEscritrio);
+		rdbtnEscritrio.setBackground(UIManager.getColor("Button.darkShadow"));
+		
+		JRadioButton rdbtnAdereo = new JRadioButton("Adereço");
+		rdbtnAdereo.setBounds(45, 35, 123, 23);
+		panel_1.add(rdbtnAdereo);
+		rdbtnAdereo.setBackground(UIManager.getColor("Button.darkShadow"));
+		
+		JRadioButton rdbtnVestimenta = new JRadioButton("Vestimenta");
+		rdbtnVestimenta.setBounds(45, 160, 123, 30);
+		panel_1.add(rdbtnVestimenta);
+		rdbtnVestimenta.setBackground(UIManager.getColor("Button.darkShadow"));
+		
+		JRadioButton rdbtnOutro = new JRadioButton("Outro");
+		rdbtnOutro.setBounds(45, 210, 123, 23);
+		panel_1.add(rdbtnOutro);
+		rdbtnOutro.setBackground(UIManager.getColor("Button.darkShadow"));
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBorder(new TitledBorder(new LineBorder(new Color(153, 153, 153), 3), "Caracter\u00EDsticas:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel_2.setBackground(UIManager.getColor("Button.darkShadow"));
+		panel_2.setBounds(399, 95, 311, 220);
+		frame.getContentPane().add(panel_2);
+		panel_2.setLayout(null);
+		
+		JLabel lblCor = new JLabel("Cor:");
+		lblCor.setBounds(25, 37, 29, 22);
+		panel_2.add(lblCor);
+		
+		JLabel lblDanoFsico = new JLabel("Dano físico:");
+		lblDanoFsico.setBounds(25, 71, 83, 15);
+		panel_2.add(lblDanoFsico);
+		
+		JLabel lblTamanho = new JLabel("Tamanho:");
+		lblTamanho.setBounds(25, 125, 70, -25);
+		panel_2.add(lblTamanho);
+		
+		JLabel lblDataDeEntrada = new JLabel("Data de entrada:");
+		lblDataDeEntrada.setBounds(25, 132, 122, 15);
+		panel_2.add(lblDataDeEntrada);
+		
+		JLabel lblStatusDaOcorrncia = new JLabel("Status da ocorrência:");
+		lblStatusDaOcorrncia.setBounds(25, 159, 159, 15);
+		panel_2.add(lblStatusDaOcorrncia);
+		
+		JLabel lblId = new JLabel("ID:");
+		lblId.setBounds(25, 186, 70, 15);
+		panel_2.add(lblId);
+		
+		JLabel lblTamanho_1 = new JLabel("Tamanho:");
+		lblTamanho_1.setBounds(25, 98, 70, 22);
+		panel_2.add(lblTamanho_1);
+		
+		textField = new JTextField();
+		textField.setBounds(185, 39, 114, 19);
+		panel_2.add(textField);
+		textField.setColumns(10);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(185, 69, 114, 19);
+		panel_2.add(textField_1);
+		textField_1.setColumns(10);
+		
+		textField_2 = new JTextField();
+		textField_2.setBounds(185, 100, 114, 19);
+		panel_2.add(textField_2);
+		textField_2.setColumns(10);
+		
+		textField_3 = new JTextField();
+		textField_3.setBounds(185, 125, 114, 19);
+		panel_2.add(textField_3);
+		textField_3.setColumns(10);
+		
+		textField_4 = new JTextField();
+		textField_4.setBounds(185, 157, 114, 19);
+		panel_2.add(textField_4);
+		textField_4.setColumns(10);
+		
+		textField_5 = new JTextField();
+		textField_5.setBounds(185, 184, 114, 19);
+		panel_2.add(textField_5);
+		textField_5.setColumns(10);
+		
+		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				TelaAdm windowTelaAdm = new TelaAdm();
+				windowTelaAdm.getFrame().setVisible(true);
+				frame.dispose();
+			}
+		});
+		btnCadastrar.setBounds(615, 394, 117, 25);
+		frame.getContentPane().add(btnCadastrar);
+		
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaAdm windowTelaAdm = new TelaAdm();
+				windowTelaAdm.getFrame().setVisible(true);
+				frame.dispose();
+			}
+		});
+		btnVoltar.setBounds(451, 394, 117, 25);
+		frame.getContentPane().add(btnVoltar);
 	}
 }

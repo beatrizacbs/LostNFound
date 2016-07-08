@@ -1,9 +1,11 @@
 package LF.Ocorrencia;
 
-import excecao.OcorrenciaInexistenteException;
-import excecao.OcorrenciaInvalidaException;
+import java.util.Collections;
 
-public class ControladorOcorrencia {
+import LF.Excecoes.OcorrenciaInexistenteException;
+import LF.Excecoes.OcorrenciaInvalidaException;
+
+public class ControladorOcorrencia implements IControladorOcorrencia{
 	
 	private RepositorioOcorrencia ocorrencias;
 	private static ControladorOcorrencia instance;
@@ -88,4 +90,8 @@ public class ControladorOcorrencia {
 		}
 	}
 
+	public Collections listarOcorrencia()
+	{
+		return ocorrencias.getOcorrencias();
+	}
 }

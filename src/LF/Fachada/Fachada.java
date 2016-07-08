@@ -1,107 +1,251 @@
 package LF.Fachada;
-import excecao.CodigoInvalidoException;
-import excecao.CpfInvalidoException;
-import excecao.EmailInvalidoException;
-import excecao.EnderecoInvalidoException;
-import excecao.IdInvalidoException;
-import excecao.LoginInvalidoException;
-import excecao.NomeInvalidoException;
-import excecao.SenhaInvalidaException;
-import excecao.TelefoneInvalidoException;
-import LF.Administrador.*;
-import LF.Cliente.*;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Map;
+
+import LF.Administrador.Administrador;
+import LF.Cliente.Cliente;
+import LF.Cliente.Endereco;
+import LF.Excecoes.AlgoEstaFaltandoException;
+import LF.Excecoes.CodigoInvalidoException;
+import LF.Excecoes.OcorrenciaInexistenteException;
+import LF.Excecoes.OcorrenciaInvalidaException;
+import LF.Excecoes.UsuarioInexistenteException;
+import LF.Excecoes.UsuarioInvalidoException;
 import LF.Ocorrencia.*;
 import LF.Usuario.*;
 
 public class Fachada {
 	
-	private RpositorioUsuario repUser;
-	private RepositorioOcorrencia repOc;
-	private static Fachada fachada;
+	private ControladorUsuario usuario;
+	private ControladorOcorrencia ocorrencia;
+	private static Fachada instance;
 	
+	// SINGLETON
 	private Fachada()
 	{
-		repUser.getInstance();
-		repOc.getInstance();
-	}
-
-	//METODOS ADM
-	public void inserirAdm(Administrador adm) throws LoginInvalidoException, CpfInvalidoException,
-	NomeInvalidoException, SenhaInvalidaException, CodigoInvalidoException
-	{
-		repAdm.inserirAdm(adm);
+		usuario = ControladorUsuario.getInstance();
+		ocorrencia = ControladorOcorrencia.getInstance();
 	}
 	
-	public boolean deletarAdm(String codigo)
-	{
-		return repAdm.deletarAdm(codigo);
-	}
-	
-	public Administrador procurarAdm(String codigo)
-	{
-		return repAdm.procurarAdm(codigo);
-	}
-	
-	public boolean atualizarAdm(String login, String senha, String codigo, String novoNome, String novoCpf)
-            throws LoginInvalidoException, CpfInvalidoException, NomeInvalidoException, 
-            SenhaInvalidaException, CodigoInvalidoException
-        {
-            return repAdm.atualizarAdm(login, senha,codigo, novoNome, novoCpf);
-        }
-
-        //Metodos do Cliente
-        public void inserirCliente(Cliente c) throws CpfInvalidoException, TelefoneInvalidoException,
-        NomeInvalidoException, SenhaInvalidaException, EmailInvalidoException, EnderecoInvalidoException
-        {
-            repCli.inserirCliente(c);
-	}
-	
-	public boolean deletarCliente(String cpf)
-	{
-		return repCli.deletarCliente(cpf);
-	}
-	
-	public boolean atualizarCliente(String login, String cpf, String novoNome, String novoEmail,
-            String novoTelefone, String novoEndereco, String senha) throws CpfInvalidoException,
-            TelefoneInvalidoException, NomeInvalidoException, SenhaInvalidaException,
-            EmailInvalidoException, EnderecoInvalidoException, LoginInvalidoException
-	{
-            return repCli.atualizarCliente(login, cpf, novoNome, novoEmail, novoTelefone, novoEndereco, senha);
-	}
-	
-	public Cliente procurarCliente(String cpf)
-	{
-            return repCli.procurarCliente(cpf);
-	}
-	
-	//Metodos da Ocorrencia
-	public void inserirOcorrencia(Ocorrencia ocorrencia) throws IdInvalidoException
-	{
-		repOc.inserirOcorrencia(ocorrencia);
-	}
-	
-	public boolean deletarOcorrencia(String id)
-	{
-		return repOc.deletarOcorrencia(id);
-	}
-	
-	public boolean atualizarOcorrencia(Ocorrencia ocorrencia) throws IdInvalidoException
-	{
-		return repOc.atualizarOcorrencia(ocorrencia);
-	}
-	
-	public Ocorrencia procurarOcorrencia(String id)
-	{
-		return repOc.procurarOcorrencia(id);
-	}
-
-
 	public static Fachada getInstance() {
-		if(fachada == null)
+		if(instance == null)
 		{
-			fachada = new Fachada();
+			instance = new Fachada();
 		}
 		
-		return fachada;
+		return instance;
 	}
+
+	
+	//METODOS USUARIO
+	
+	/*public Collection listarUsuario()	{
+		return this.usuario.listarUsuario();
+	}*/
+	
+	//Metodo de verificação de login (se eh Adm ou cliente)
+		public Usuario verificadorLogin(String login, String senha) throws UsuarioInexistenteException{
+			Usuario aux;
+			try {
+				aux = usuario.buscarUsuario(login);
+				
+				if(aux.getSenha().equals(senha))
+				{
+					if(aux instanceof Cliente)
+					{
+						return aux;
+					}
+					else if(aux instanceof Administrador)
+					{
+						return aux;
+					}
+				}
+				
+			} catch (UsuarioInexistenteException e) {
+				
+				throw new UsuarioInexistenteException();
+			}
+			return null;
+			
+		}
+	
+	public void inserirUsuario(String nome, String cpf, String email, String codigo, String telefone, String login, String senha,
+			String logradouro, String bairro, String cep, String numero, String complemento, String cidade, String estado)
+	throws AlgoEstaFaltandoException, UsuarioInvalidoException
+	{
+		if(!codigo.equals(""))
+		{
+			if(login.equals("") || senha.equals("") || cpf.equals("") || nome.equals(""))
+			{
+				throw new AlgoEstaFaltandoException();
+				
+			}
+			else
+			{
+				try {
+					
+					usuario.inseirUsuario(new Administrador(codigo, login, senha, cpf, nome));
+				} catch (UsuarioInvalidoException e) {
+					
+					throw new UsuarioInvalidoException();
+				}
+			}
+		}
+		else
+		{
+			if(login.equals("") || senha.equals("") || cpf.equals("") || nome.equals(""))
+			{
+				throw new AlgoEstaFaltandoException();
+			}
+			else
+			{
+				// TODO: EU ACHO QUE AQUI DEPOIS A GENTE VAI TER QUE COLOCAR UM TRY/CATCH
+				usuario.inseirUsuario(new Cliente(login, email, senha, cpf, telefone, nome, this.novoEndereco(logradouro,
+				bairro, cep, numero, complemento, cidade, estado)));
+			}
+			
+		}
+	}
+
+	private Endereco novoEndereco(String logradouro, String bairro, String cep,
+			String numero, String complemento, String cidade, String estado) throws AlgoEstaFaltandoException {
+		
+		if(logradouro == null || bairro == null || cep == null || numero == null || complemento == null || cidade == null || estado
+				== null)
+		{
+			throw new AlgoEstaFaltandoException();
+		}
+		return new Endereco(logradouro, bairro, cep, numero, complemento, cidade, estado);
+		
+	}
+	
+	public void removerUsuario(String codigo) throws UsuarioInexistenteException, CodigoInvalidoException
+	{
+		if(codigo.length() != 4)
+		{
+			try {
+				usuario.removerUsuario(null);
+			} catch (UsuarioInexistenteException e) {
+				
+				throw new UsuarioInexistenteException();
+				
+			} catch (CodigoInvalidoException e) {
+				
+				throw new CodigoInvalidoException();
+			}
+		}
+		else
+		{
+			usuario.removerUsuario(codigo);
+		}
+	}
+	
+	//TODO: TEM QUE FAZER AQUI AINDA
+	public void atualizarUsuario(String nome, String cpf, String email, String codigo, String telefone, String login, String senha)
+	{
+		
+	}
+	
+	public void atualizarEndereco(String logradouro, String bairro, String cep, String numero, String complemento, String cidade, String estado)
+	{
+		
+		
+	}
+	
+	public Usuario buscarUsuario(String codigo) throws UsuarioInexistenteException, CodigoInvalidoException
+	{
+		if(codigo.length() == 4 || codigo.length() == 11)
+		{
+			try {
+				return usuario.buscarUsuario(codigo);
+			} catch (UsuarioInexistenteException e) {
+				throw new UsuarioInexistenteException();
+			}
+		}
+		else
+		{
+			try
+			{
+				return usuario.buscarUsuario(null);
+			} 
+			catch(UsuarioInexistenteException e)
+			{
+				throw new CodigoInvalidoException();
+			}
+			
+			
+		}
+	}
+	
+	//METODOS OCORRENCIA
+	
+	public void inserirOcorrencia(Tipo tipo, Caract caracteristica, String dataEntrada, boolean devolvido, String id) 
+	throws OcorrenciaInvalidaException
+	{
+		if(caracteristica != null)
+		{
+			try {
+				ocorrencia.inserirOcorrencia(new Ocorrencia(tipo, caracteristica, dataEntrada, false, id));
+			} catch (OcorrenciaInvalidaException e) {
+				throw new OcorrenciaInvalidaException();
+			}
+		}
+	}
+
+	public void removerOcorrencia(String id) throws OcorrenciaInvalidaException, OcorrenciaInexistenteException
+	{
+		if(id != null)
+		{
+			try {
+				ocorrencia.removerOcorrencia(id);
+				
+			} catch (OcorrenciaInvalidaException e) {
+				
+				throw new OcorrenciaInvalidaException();
+				
+			} catch (OcorrenciaInexistenteException e) {
+				
+				throw new OcorrenciaInexistenteException();
+			}
+		}
+		else
+		{
+			throw new OcorrenciaInvalidaException();
+		}
+	}
+
+	//TODO: TEM QUE FAZER ESSE TAMBEM
+	public void atualizarOcorrencia(Tipo tipo, Caract caracteristica, String dataEntrada, boolean devolvido, String id)
+	{
+		
+	}
+	
+	public Ocorrencia buscarOcorrencia(String id) throws OcorrenciaInvalidaException, OcorrenciaInexistenteException
+	{
+		if(id != null)
+		{
+			try {
+				return ocorrencia.buscarOcorrencia(id);
+			} catch (OcorrenciaInexistenteException e) {
+				throw new OcorrenciaInexistenteException();
+			}
+		}
+		else
+		{
+			throw new OcorrenciaInvalidaException();
+		}
+	}
+	
+	//TODO: ESSE AQUI AINDA NAO DESCOBRIR COMO VOU FAZER MAS VAI TÁ PRONTO
+	
+	public Collections listarOcorrencia()
+	{
+		return  ocorrencia.listarOcorrencia();
+	}
+	
+	
+	
+	
 }

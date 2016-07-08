@@ -1,22 +1,24 @@
 package LF.Usuario;
 
-import excecao.CodigoInvalidoException;
-import excecao.UsuarioInexistenteException;
-import excecao.UsuarioInvalidoException;
+import java.util.Collections;
+
 import LF.Administrador.Administrador;
 import LF.Cliente.Cliente;
+import LF.Excecoes.CodigoInvalidoException;
+import LF.Excecoes.UsuarioInexistenteException;
+import LF.Excecoes.UsuarioInvalidoException;
 
-public class ControladorUsuario {
+public class ControladorUsuario implements IControladorUsuario{
 	
 	private RpositorioUsuario usuarios;
-	private ControladorUsuario instance;
+	private static ControladorUsuario instance;
 	
 	private ControladorUsuario()
 	{
-		usuarios = usuarios.getInstance();
+		usuarios = RpositorioUsuario.getInstance();
 	}
 	
-	public ControladorUsuario getInstance()
+	public static ControladorUsuario getInstance()
 	{
 		if(instance == null)
 		{
@@ -28,10 +30,12 @@ public class ControladorUsuario {
 	
 	public void inseirUsuario(Usuario u)throws UsuarioInvalidoException
 	{
+		System.out.println("Entrou no metodo de inserir usuario do controlador");
 		if(u != null)
 		{
 			if(u instanceof Cliente)
 			{
+				System.out.println("");
 				usuarios.addUsuario(u.getCpf(), u);
 			}
 			else if(u instanceof Administrador)
@@ -52,7 +56,7 @@ public class ControladorUsuario {
 	
 	public void removerUsuario(String codigo)throws UsuarioInexistenteException, CodigoInvalidoException
 	{
-		if(codigo != null)
+		if(!codigo.equals(""))
 		{
 			if(usuarios.procuraUsuario(codigo) != null)
 			{
@@ -116,8 +120,8 @@ public class ControladorUsuario {
 	}
 	
 	//TODO: Depois tem que ajeitar isso aqui.
-	public String listarUsuario()
+	public Collections listarUsuario()
 	{
-		return this.usuarios.getUsuario().toString();
+		return (Collections) this.usuarios.getUsuario();
 	}
 }

@@ -4,6 +4,8 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import LF.Excecoes.UsuarioInexistenteException;
+
 public class RpositorioUsuario implements IRpositorioUsuario{
 	
 	private Map<String, Usuario> usuarios;
@@ -26,6 +28,7 @@ public class RpositorioUsuario implements IRpositorioUsuario{
 	
 	public void addUsuario(String codigo, Usuario u)
 	{
+		System.out.println("criou o usuario");
 		this.usuarios.put(codigo, u);
 	}
 	
@@ -34,9 +37,16 @@ public class RpositorioUsuario implements IRpositorioUsuario{
 		this.usuarios.remove(codigo);
 	}
 	
-	public Usuario procuraUsuario(String codigo)
+	public Usuario procuraUsuario(String codigo) throws UsuarioInexistenteException
 	{
-		return this.usuarios.get(codigo);
+		if(this.usuarios.get(codigo) == null)
+		{
+			throw new UsuarioInexistenteException();
+		}
+		else
+		{
+			return this.usuarios.get(codigo);
+		}
 	}
 	
 	public void updateUsuario(String codigo, Usuario u)
@@ -44,7 +54,7 @@ public class RpositorioUsuario implements IRpositorioUsuario{
 		this.usuarios.replace(codigo, u);
 	}
 
-	public Collection<Usuario> getUsuario()
+	public Collection getUsuario()
 	{
 		return usuarios.values();
 	}
